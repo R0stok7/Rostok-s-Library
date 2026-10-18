@@ -3,6 +3,7 @@ local cloneref = type(cloneref) == "function" and cloneref or function(obj) retu
 local UIS = cloneref(game:GetService("UserInputService"))
 
 local Scale = 1
+local Names = true
 
 local Key = Enum.KeyCode.P -- EDITABLE
 
@@ -10,7 +11,8 @@ function AddHighlight(targetObject)
     if not targetObject:FindFirstChild("TeamHighlight") then
         local Highlight = Instance.new"Highlight"
         Highlight.Name = "TeamHighlight"
-        Highlight.FillColor = Color3.fromRGB(255,255,255)
+        Highlight.FillColor = Color3.fromRGB(255,0,0)
+        Highlight.OutlineColor = Color3.fromRGB(255,0,0)
         Highlight.FillTransparency = 0.7
         Highlight.Parent = targetObject
     end
@@ -21,6 +23,7 @@ function AddHighlight(targetObject)
         Billboard.Name = "TeamName"
         Billboard.Parent = targetObject.Head
         Billboard.AlwaysOnTop = true
+        Billboard.Enabled = Names
 
         local TextLabel = Instance.new("TextLabel")
         TextLabel.TextScaled = true
@@ -49,6 +52,18 @@ UIS.InputBegan:Connect(function(inp, g)
                 v.Character.Head.Size = Vector3.new(1,1,1)
                 if v.Character:FindFirstChild("TeamHighlight") then
                     v.Character.TeamHighlight:Destroy()
+                end
+            end
+        end
+    elseif inp.KeyCode == Enum.KeyCode.O then
+        Names = not Names
+        for i,v in pairs(game.Players:GetPlayers()) do
+            if v.Character and v ~= game.Players.LocalPlayer then 
+                if not v.Character:FindFirstChild("Head") then
+                    continue
+                end
+                if v.Character.Head:FindFirstChild("TeamName") then
+                    v.Character.Head.TeamName.Enabled = Names
                 end
             end
         end
