@@ -10,8 +10,8 @@ function AddHighlight(targetObject)
     if not targetObject:FindFirstChild("TeamHighlight") then
         local Highlight = Instance.new"Highlight"
         Highlight.Name = "TeamHighlight"
-        Highlight.FillColor3 = Color3.new(255,255,255)
-        Highlight.FillTransparency = 0.9
+        Highlight.FillColor = Color3.fromRGB(255,255,255)
+        Highlight.FillTransparency = 0.7
         Highlight.Parent = targetObject
     end
     
@@ -20,13 +20,15 @@ function AddHighlight(targetObject)
         Billboard.Size = UDim2.new(2,0,1,0)
         Billboard.Name = "TeamName"
         Billboard.Parent = targetObject.Head
+        Billboard.AlwaysOnTop = true
 
         local TextLabel = Instance.new("TextLabel")
         TextLabel.TextScaled = true
         TextLabel.TextStrokeTransparency = 0
         TextLabel.TextColor3 = Color3.fromRGB(255,255,255)
         TextLabel.Text = targetObject.Name
-        TextLabel.Size = UDim2.new(1,0,1,0)
+        TextLabel.Size = UDim2.new(0,40,0,15)
+        TextLabel.BackgroundTransparency = 1
         TextLabel.Parent = Billboard
     end
     
