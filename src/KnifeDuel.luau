@@ -26,7 +26,7 @@ function AddHighlight(targetObject)
         TextLabel.TextStrokeTransparency = 0
         TextLabel.TextColor3 = Color3.fromRGB(255,255,255)
         TextLabel.Text = targetObject.Name
-        TextLabel.Size = Udim2.new(1,0,1,0)
+        TextLabel.Size = UDim2.new(1,0,1,0)
         TextLabel.Parent = Billboard
     end
     
