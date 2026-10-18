@@ -10,7 +10,7 @@ function AddHighlight(targetObject)
     if not targetObject:FindFirstChild("TeamHighlight") then
         local Highlight = Instance.new"Highlight"
         Highlight.Name = "TeamHighlight"
-        Highlight.FillColor = Color3.new(255,255,255)
+        Highlight.FillColor3 = Color3.new(255,255,255)
         Highlight.FillTransparency = 0.9
         Highlight.Parent = targetObject
     end
